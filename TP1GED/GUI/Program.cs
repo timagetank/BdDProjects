@@ -9,17 +9,20 @@ namespace TP1GED.GUI
 {
     class Program
     {
-        static cMonde monde1;      
+        static cMonde monde1;
+
 
         static void Main(string[] args)
         {
+            monde1.CreerMonde();
+            ListerMonde();
 
-            /*CreateMonde("Monde SATANIQUE", 666, 666);
-            SupprimMonde(monde1);*/
 
 
             Console.ReadKey();
         }
+
+        #region Methodes
 
         static void CreateMonde(string description, int limitX, int limitY)
         {
@@ -33,12 +36,13 @@ namespace TP1GED.GUI
         {
             Console.WriteLine("ID: " + monde.AccesMonde.Id);
             Console.WriteLine("Description: " + monde.AccesMonde.Description);
-            Console.WriteLine("Limies en X et Y: " + monde.AccesMonde.LimiteX + ", " + monde.AccesMonde.LimiteY);
+            Console.WriteLine("Limites en X et Y: " + monde.AccesMonde.LimiteX + ", " + monde.AccesMonde.LimiteY);
         }
 
         static void ListerMonde()
         {
-
+            foreach (var m in monde1.RetournerListeMondes())
+                Console.WriteLine(m.Id + Environment.NewLine + m.Description);
         }
 
         static void SupprimMonde(cMonde monde)
@@ -46,7 +50,9 @@ namespace TP1GED.GUI
             Console.WriteLine("Monde avant la supression");
             AfficherMonde(monde);
             monde.SupprimerMonde();
-            Console.WriteLine("Monde supprime !");
+            Console.WriteLine("Monde supprime!");
         }
+
+        #endregion
     }
 }

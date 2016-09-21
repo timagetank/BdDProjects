@@ -25,7 +25,7 @@ namespace TP1GED.GUI
             //CreateMonde("Monde SATANIQUE", 666, 666);
             //CreateObjet("BabyGoon", 5, 69, 99);
 
-            CreateUser("spam@shit.com", "SATANIQUE", "Ricaneur", "Vaseline","1234", 666);
+            CreateUser("spam@phish.com", "Har-Laporte", "Xeyve", "xharl","1234", 665);
             ListerUser();
 
 

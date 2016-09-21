@@ -50,9 +50,9 @@ namespace TP1GED.BLL
         /// </summary>
         public void CreerObjet(cMonde monde)
         {
-            _objet.Id = monde.AccesMonde.Id;
+            //_objet.Id = monde.AccesMonde.Id;
             monde.AjouterObjet(_objet);
-            context.ObjetMonde.Add(_objet);
+     
             //context.SaveChanges();
         }
 

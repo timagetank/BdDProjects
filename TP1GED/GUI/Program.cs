@@ -21,9 +21,9 @@ namespace TP1GED.GUI
             */
 
             // Jeux de test ObjetMonde
-            CreateMonde("Enfer", 666, 666);
+            CreateMonde("Monde SATANIQUE", 666, 666);
             CreateObjet("BabyGoon", 5, 69, 99);
-            CreateMonde("Enfer", 666, 666);
+            CreateMonde("Monde SATANIQUE", 666, 666);
 
 
 

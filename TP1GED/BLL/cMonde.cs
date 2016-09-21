@@ -20,7 +20,7 @@ namespace TP1GED.BLL
         private List<cItem> _items;
         private int _limiteX;
         private int _limiteY;
-        private List<cMonstre> _monstres;
+        private List<Monstre> _monstres;
         private List<ObjetMonde> _objetsMonde;
         private Monde _monde; 
 
@@ -34,6 +34,7 @@ namespace TP1GED.BLL
         {
             _monde = new Monde();
             _objetsMonde = new List<ObjetMonde>();
+            _monstres = new List<Monstre>();
             _monde.Description = description;
             _monde.LimiteX = limiteX;
             _monde.LimiteY = limiteY;
@@ -119,7 +120,7 @@ namespace TP1GED.BLL
         public void AjouterObjet(ObjetMonde objet)
         {
             _objetsMonde.Add(objet);
-            context.ObjetMonde.Add(objet);
+            _monde.ObjetMonde.Add(objet);
         }
 
         /// <summary>
@@ -129,6 +130,25 @@ namespace TP1GED.BLL
         public void RetirerObjet(ObjetMonde objet)
         {
             _objetsMonde.Remove(objet);
+        }
+
+        /// <summary>
+        /// Permet d'ajouter un monstre au monde.
+        /// </summary>
+        /// <param name="monstre"></param>
+        public void AjouterMonstre(Monstre monstre)
+        {
+            _monstres.Add(monstre);
+            _monde.Monstre.Add(monstre);
+        }
+
+        /// <summary>
+        /// Permet de retirer un monstre au monde.
+        /// </summary>
+        /// <param name="monstre"></param>
+        public void RetirerMonstre(Monstre monstre)
+        {
+            _monstres.Remove(monstre);
         }
     }
 }

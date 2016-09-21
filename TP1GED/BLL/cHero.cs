@@ -103,9 +103,9 @@ namespace TP1GED.BLL
         /// Permet de retourner tous les éléments dans un rayon de 200 par 200.
         /// </summary>
         /// <param name="monde"></param>
-        public void RetournerElements(cMonde monde) // À modifier
+        public IEnumerable<ObjetMonde> RetournerElements() // À modifier
         {
-
+            return _hero.Monde.ObjetMonde.Where(obj => Math.Abs(obj.x - _hero.x) <= 200 && Math.Abs(obj.y - _hero.y) <= 200);
         }
 
         /// <summary>
@@ -113,7 +113,8 @@ namespace TP1GED.BLL
         /// </summary>
         public void SupprimerHeros()
         {
-
+            context.Heros.Remove(_hero);
+            context.SaveChanges();
         }
     }
 }

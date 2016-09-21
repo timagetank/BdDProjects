@@ -14,20 +14,7 @@ namespace TP1GED.BLL
     /// </summary>
     public class cItem : cTable
     {
-        private string _description;
-        private List<cEffetItem> _effets;
-        private int _niveau;
-        private string _nom;
-        private int _poids;
-        private int _quantite;
-        private int _reqDexterite;
-        private int _reqEndurance;
-        private int _reqForce;
-        private int _reqIntelligence;
-        private int _reqNiveau;
-        private int _valeurArgent;
-        private int _x;
-        private int _y;
+        private Item _item;
 
         /// <summary>
         /// Constructeur
@@ -47,19 +34,20 @@ namespace TP1GED.BLL
         /// <param name="y"></param>
         public cItem(string description, int niveau, string nom, int poids, int quantite, int reqDexterite, int reqEndurance, int reqForce, int reqIntelligence, int reqNiveau, int ValeurArgent, int x, int y) // A modifier
         {
-            _description = description;
-            _niveau = niveau;
-            _nom = nom;
-            _poids = poids;
-            _quantite = quantite;
-            _reqDexterite = reqDexterite;
-            _reqEndurance = reqEndurance;
-            _reqForce = reqForce;
-            _reqIntelligence = reqIntelligence;
-            _reqNiveau = reqNiveau;
-            _valeurArgent = ValeurArgent;
-            _x = x;
-            _y = y;
+            _item = new Item();
+            _item.Description = description;
+            _item.Niveau = niveau;
+            _item.Nom = nom;
+            _item.Poids = poids;
+            _item.Quantite = quantite;
+            _item.ReqDexterite = reqDexterite;
+            _item.ReqEndurance = reqEndurance;
+            _item.ReqForce = reqForce;
+            _item.ReqIntelligence = reqIntelligence;
+            _item.ReqNiveau = reqNiveau;
+            _item.ValeurArgent = ValeurArgent;
+            _item.x = x;
+            _item.y = y;
         }
 
         /// <summary>
@@ -67,8 +55,9 @@ namespace TP1GED.BLL
         /// </summary>
         public void RamasserItem()
         {
-            _x = 0;
-            _y = 0;
+            _item.x = 0;
+            _item.y = 0;
+            context.SaveChanges();
         }
 
         /// <summary>
@@ -76,7 +65,8 @@ namespace TP1GED.BLL
         /// </summary>
         public void CreerItem() // Pour la BD
         {
-
+            context.Item.Add(_item);
+            context.SaveChanges();
         }
 
         /// <summary>
@@ -85,7 +75,8 @@ namespace TP1GED.BLL
         /// <param name="qte"></param>
         public void ModifierQte(int qte)
         {
-            _quantite = qte;
+            _item.Quantite = qte;
+            context.SaveChanges();
         }
 
         /// <summary>
@@ -93,7 +84,8 @@ namespace TP1GED.BLL
         /// </summary>
         public void SupprimerItem()
         {
-
+            context.Item.Remove(_item);
+            context.SaveChanges();
         }
     }
 }

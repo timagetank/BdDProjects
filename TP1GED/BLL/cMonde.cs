@@ -14,14 +14,6 @@ namespace TP1GED.BLL
     /// </summary>
     public class cMonde : cTable
     {
-        private List<cClasse> _classes;
-        private string _description;
-        private List<cHero> _heros;
-        private List<cItem> _items;
-        private int _limiteX;
-        private int _limiteY;
-        private List<Monstre> _monstres;
-        private List<ObjetMonde> _objetsMonde;
         private Monde _monde; 
 
         /// <summary>
@@ -33,14 +25,11 @@ namespace TP1GED.BLL
         public cMonde(string description, int limiteX, int limiteY)
         {
             _monde = new Monde();
-            _objetsMonde = new List<ObjetMonde>();
-            _monstres = new List<Monstre>();
+            _monde.ObjetMonde = new List<ObjetMonde>();
+            _monde.Monstre = new List<Monstre>();
             _monde.Description = description;
             _monde.LimiteX = limiteX;
             _monde.LimiteY = limiteY;
-            _description = description;
-            _limiteX = limiteX;
-            _limiteY = limiteY;
         }
 
         /// <summary>
@@ -70,8 +59,7 @@ namespace TP1GED.BLL
         /// <param name="description"></param>
         public void ModifierDescription(string description)
         {
-            _description = description;
-            _monde.Description = _description;
+            _monde.Description = description;
             context.SaveChanges();
         }
 
@@ -82,8 +70,6 @@ namespace TP1GED.BLL
         /// <param name="y"></param>
         public void ModifierLimites(int x, int y)
         {
-            _limiteX = x;
-            _limiteY = y;
             _monde.LimiteX = x;
             _monde.LimiteY = y;
             context.SaveChanges();
@@ -95,13 +81,8 @@ namespace TP1GED.BLL
         /// <returns></returns>
         public List<Monde> RetournerListeMondes() 
         {
-            List<Monde> listeMondes = new List<Monde>();
-            var req = context.Monde;
-            foreach (Monde m in req)
-            {
-                listeMondes.Add(m);                              
-            }
-            return listeMondes;
+            
+            return context.Monde.ToList();
         }
 
         /// <summary>
@@ -119,8 +100,8 @@ namespace TP1GED.BLL
         /// <param name="objet"></param>
         public void AjouterObjet(ObjetMonde objet)
         {
-            _objetsMonde.Add(objet);
             _monde.ObjetMonde.Add(objet);
+            context.SaveChanges();
         }
 
         /// <summary>
@@ -129,7 +110,8 @@ namespace TP1GED.BLL
         /// <param name="objet"></param>
         public void RetirerObjet(ObjetMonde objet)
         {
-            _objetsMonde.Remove(objet);
+            _monde.ObjetMonde.Remove(objet);
+            context.SaveChanges();
         }
 
         /// <summary>
@@ -138,8 +120,8 @@ namespace TP1GED.BLL
         /// <param name="monstre"></param>
         public void AjouterMonstre(Monstre monstre)
         {
-            _monstres.Add(monstre);
             _monde.Monstre.Add(monstre);
+            context.SaveChanges();
         }
 
         /// <summary>
@@ -148,7 +130,8 @@ namespace TP1GED.BLL
         /// <param name="monstre"></param>
         public void RetirerMonstre(Monstre monstre)
         {
-            _monstres.Remove(monstre);
+            _monde.Monstre.Remove(monstre);
+            context.SaveChanges();
         }
     }
 }

@@ -14,10 +14,6 @@ namespace TP1GED.BLL
     /// </summary>
     public class cObjetMonde : cTable
     {
-        private string _description;
-        private int _type; // À remplacer par un enum ?
-        private int _x;
-        private int _y;
         private ObjetMonde _objet;
 
         /// <summary>
@@ -26,11 +22,11 @@ namespace TP1GED.BLL
         public cObjetMonde(string description, int type, int x, int y)
         {
             _objet = new ObjetMonde();
-            _description = description;
-            _type = type;
+            _objet.Description = description;
+            _objet.TypeObjet = type;
             // Ajouter une condition ?
-            _x = x;
-            _y = y;
+            _objet.x = x;
+            _objet.y = y;
         }
 
         /// <summary>
@@ -50,19 +46,17 @@ namespace TP1GED.BLL
         /// </summary>
         public void CreerObjet(cMonde monde)
         {
-            //_objet.Id = monde.AccesMonde.Id;
             monde.AjouterObjet(_objet);
-     
-            //context.SaveChanges();
+            context.SaveChanges();
         }
 
         /// <summary>
         /// Permet de modifierla description d'un objet pour un monde donné.
         /// </summary>
-        public void ModifierDescription(cMonde monde, string description)
+        public void ModifierDescription( string description)
         {
-            _description = description;
-            monde.AjouterObjet(_objet);
+            _objet.Description = description;
+            context.SaveChanges();
         }
 
         /// <summary>

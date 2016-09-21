@@ -14,13 +14,6 @@ namespace TP1GED.BLL
     /// </summary>
     public class cMonstre : cTable
     {
-        private string _nom;
-        private int _niveau;
-        private int _StatDmgMax;
-        private int _StatDmgMin;
-        private int _StatPV;
-        private int _x;
-        private int _y;
         private Monstre _monstre;
 
         /// <summary>
@@ -35,16 +28,16 @@ namespace TP1GED.BLL
         /// <param name="y"></param>
         public cMonstre(string nom, int x, int y)
         {
-            _nom = nom;
             _monstre = new Monstre();
-            Random rnd = new Random();
+            _monstre.Nom = nom;
+            Random rnd = new Random(DateTime.Now.Millisecond);
 
-            _niveau = rnd.Next(1, 20);
-            _StatDmgMax = rnd.Next(10, 40);
-            _StatDmgMin = rnd.Next(1, 40);
-            _StatPV = rnd.Next(1, 50);
-            _x = x;
-            _y = y;
+            _monstre.Niveau = rnd.Next(1, 20);
+            _monstre.StatDmgMax = rnd.Next(10, 40);
+            _monstre.StatDmgMin = rnd.Next(1, 40);
+            _monstre.StatPV = rnd.Next(1, 50);
+            _monstre.x = x;
+            _monstre.y = y;
         }
 
         /// <summary>
@@ -65,17 +58,18 @@ namespace TP1GED.BLL
         public void CreerMonstre(cMonde monde)
         {            
             monde.AjouterMonstre(_monstre);
+            context.SaveChanges();
         }
 
         /// <summary>
         /// Permet de modifier les informations d'un monstre
         /// </summary>
-        public void ModifierInfos(cMonde monde, string nom, int x, int y) // Ceux generer random aussi ?
+        public void ModifierInfos(string nom, int x, int y) // Ceux generer random aussi ?
         {
-            _nom = nom;
-            _x = x;
-            _y = y;
-            monde.AjouterMonstre(_monstre);
+            _monstre.Nom = nom;
+            _monstre.x = x;
+            _monstre.y = y;
+            context.SaveChanges();
         }
 
         /// <summary>

@@ -36,7 +36,7 @@ namespace TP1GED.BLL
         public cCompteJoueur(string courriel, string nom, string prenom, string username, string mdp, int type)
         {
             _compte = new CompteJoueur();
-<<<<<<< HEAD
+
             _compte.Courriel = courriel;
             _compte.Nom = nom;
             _compte.Prenom = prenom;
@@ -45,22 +45,7 @@ namespace TP1GED.BLL
             _compte.TypeUtilisateur = type;   
         }
 
-        public CompteJoueur AccesCompte
-        {
-            get
-            {
-                return _compte;
-            }
-=======
-            _courriel = courriel;
-            _nom = nom;
-            _prenom = prenom;
-            _nomUtilisateur = username;
-            _password = mdp;
-            _TypeUtilisateur = type;           
->>>>>>> master
-        }
-
+    
         public CompteJoueur AccesCompte
         {
             get
@@ -88,11 +73,12 @@ namespace TP1GED.BLL
         /// <param name="type"></param>
         public void ModifierParametres(string courriel, string nom, string prenom, string mdp, int type) // A revoir
         {
-            _courriel = courriel;
-            _nom = nom;
-            _prenom = prenom;
-            _password = mdp;
-            _TypeUtilisateur = type;
+            _compte.Courriel = courriel;
+            _compte.Nom = nom;
+            _compte.Prenom = prenom;
+          //  _compte.NomUtilisateur = username;
+            _compte.Password = mdp;
+            _compte.TypeUtilisateur = type;
             context.SaveChanges();
         }
 

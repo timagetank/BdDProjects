@@ -63,6 +63,7 @@
     <Compile Include="BLL\cMonde.cs" />
     <Compile Include="BLL\cMonstre.cs" />
     <Compile Include="BLL\cObjetMonde.cs" />
+    <Compile Include="BLL\cRequest.cs" />
     <Compile Include="BLL\cTable.cs" />
     <Compile Include="DAL\Classe.cs">
       <DependentUpon>Model.tt</DependentUpon>

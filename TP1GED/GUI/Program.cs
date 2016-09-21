@@ -26,6 +26,7 @@ namespace TP1GED.GUI
             //CreateObjet("BabyGoon", 5, 69, 99);
 
             CreateUser("spam@shit.com", "SATANIQUE", "Ricaneur", "Irrite-Anus", "1234", 666);
+            ListerUser();
 
 
 
@@ -77,6 +78,12 @@ namespace TP1GED.GUI
             Console.WriteLine("Creation d'un joueur");
         }
 
+        static void ListerUser()
+        {
+            cRequest allo = new cRequest();
+            foreach (var u in allo.getEntities().CompteJoueur   )
+                Console.WriteLine(u.Id + ": " + u.NomUtilisateur);
+        }
         #endregion
     }
 }

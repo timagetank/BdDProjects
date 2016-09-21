@@ -14,27 +14,27 @@ namespace TP1GED.BLL
     /// </summary>
     public class cEffetItem : cTable
     {
-        private string _typeEffet; // Remplacer par un enum ?
-        private int _valeurEffet;
+        private EffetItem _effet;
 
         /// <summary>
         /// Constructeur
         /// </summary>
         /// <param name="type"></param>
         /// <param name="valeurEffet"></param>
-        public cEffetItem(string type, int valeurEffet)
+        public cEffetItem(int type, int valeurEffet)
         {
-            _typeEffet = type;
-            _valeurEffet = valeurEffet;
+            _effet.TypeEffet = type;
+            _effet.ValeurEffet = valeurEffet;
         }
 
         /// <summary>
         /// Permet d'ajouter un effet à un item.
         /// </summary>
         /// <param name="objet"></param>
-        public void AjouterEffet(cItem objet)
+        public void AjouterEffet()
         {
-            
+            context.EffetItem.Add(_effet);
+            context.SaveChanges();
         }
 
         /// <summary>
@@ -43,11 +43,11 @@ namespace TP1GED.BLL
         /// <param name="objet"></param>
         /// <param name="type"></param>
         /// <param name="valeurEffet"></param>
-        public void ModifierEffet(cItem objet, string type, int valeurEffet)
+        public void ModifierEffet(int type, int valeurEffet)
         {
             // A modifier evidement
-            _typeEffet = type;
-            _valeurEffet = valeurEffet;
+            _effet.TypeEffet = type;
+            _effet.ValeurEffet = valeurEffet;
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace TP1GED.BLL
         /// <param name="objet"></param>
         public void SupprimerEffet(cItem objet)
         {
-
+            context.EffetItem.Remove(_effet);
         }
     }
 }

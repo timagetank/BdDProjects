@@ -11,6 +11,7 @@ namespace TP1GED.GUI
     {
         static cMonde monde1;
         static cObjetMonde objet1;
+        static cCompteJoueur user1;
 
 
         static void Main(string[] args)
@@ -21,9 +22,10 @@ namespace TP1GED.GUI
             */
 
             // Jeux de test ObjetMonde
-            CreateMonde("Monde SATANIQUE", 666, 666);
-            CreateObjet("BabyGoon", 5, 69, 99);
-            CreateMonde("Monde SATANIQUE", 666, 666);
+            //CreateMonde("Monde SATANIQUE", 666, 666);
+            //CreateObjet("BabyGoon", 5, 69, 99);
+
+            CreateUser("spam@shit.com", "SATANIQUE", "Ricaneur", "Irrite-Anus", "1234", 666);
 
 
 
@@ -66,6 +68,13 @@ namespace TP1GED.GUI
             objet1 = new cObjetMonde(description, type, x, y);
             objet1.CreerObjet(monde1);
             Console.WriteLine("Creation d'un objet");
+        }
+
+        static void CreateUser(string email, string nom, string prenom, string username, string mdp, int type)
+        {
+            user1 = new cCompteJoueur(email, nom, prenom, username, mdp, type);
+            user1.CreerJoueur();
+            Console.WriteLine("Creation d'un joueur");
         }
 
         #endregion

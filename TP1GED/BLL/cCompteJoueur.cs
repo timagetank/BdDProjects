@@ -36,12 +36,12 @@ namespace TP1GED.BLL
         public cCompteJoueur(string courriel, string nom, string prenom, string username, string mdp, int type)
         {
             _compte = new CompteJoueur();
-            _courriel = courriel;
-            _nom = nom;
-            _prenom = prenom;
-            _nomUtilisateur = username;
-            _password = mdp;
-            _TypeUtilisateur = type;           
+            _compte.Courriel = courriel;
+            _compte.Nom = nom;
+            _compte.Prenom = prenom;
+            _compte.NomUtilisateur = username;
+            _compte.Password = mdp;
+            _compte.TypeUtilisateur = type;   
         }
 
         public CompteJoueur AccesCompte

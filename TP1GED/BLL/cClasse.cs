@@ -27,6 +27,8 @@ namespace TP1GED.BLL
         /// <param name="StatVitalite"></param>
         public cClasse(string nom, string description, int StatStr, int StatDex, int StatInt, int StatVitalite)
         {
+            _classe = new Classe();
+
             _classe.NomClasse = nom;
             _classe.Description = description;
             _classe.StatBaseStr = StatStr;

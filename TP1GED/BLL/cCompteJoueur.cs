@@ -21,7 +21,8 @@ namespace TP1GED.BLL
         private string _prenom;
         private string _nomUtilisateur;
         private string _password;
-        private string _TypeUtilisateur; // Rempalcer par un enum ?
+        private int _TypeUtilisateur; // Rempalcer par un enum ?
+        private CompteJoueur _compte;
 
         /// <summary>
         /// Constructeur
@@ -32,8 +33,9 @@ namespace TP1GED.BLL
         /// <param name="username"></param>
         /// <param name="mdp"></param>
         /// <param name="type"></param>
-        public cCompteJoueur(string courriel, string nom, string prenom, string username, string mdp, string type)
+        public cCompteJoueur(string courriel, string nom, string prenom, string username, string mdp, int type)
         {
+            _compte = new CompteJoueur();
             _courriel = courriel;
             _nom = nom;
             _prenom = prenom;
@@ -42,12 +44,21 @@ namespace TP1GED.BLL
             _TypeUtilisateur = type;           
         }
 
+        public CompteJoueur AccesCompte
+        {
+            get
+            {
+                return _compte;
+            }
+        }
+
         /// <summary>
         /// Permet de créer un nouveau joueur.
         /// </summary>
         public void CreerJoueur()
         {
-
+            context.CompteJoueur.Add(_compte);
+            context.SaveChanges();
         }
         
         /// <summary>
@@ -58,13 +69,14 @@ namespace TP1GED.BLL
         /// <param name="prenom"></param>
         /// <param name="mdp"></param>
         /// <param name="type"></param>
-        public void ModifierParametres(string courriel, string nom, string prenom, string mdp, string type) // A revoir
+        public void ModifierParametres(string courriel, string nom, string prenom, string mdp, int type) // A revoir
         {
             _courriel = courriel;
             _nom = nom;
             _prenom = prenom;
             _password = mdp;
             _TypeUtilisateur = type;
+            context.SaveChanges();
         }
 
         /// <summary>
@@ -72,7 +84,8 @@ namespace TP1GED.BLL
         /// </summary>
         public void SupprimerJoueur()
         {
-
+            context.CompteJoueur.Remove(_compte);
+            context.SaveChanges();
         }
 
         /// <summary>

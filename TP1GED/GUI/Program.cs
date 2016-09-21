@@ -9,7 +9,7 @@ namespace TP1GED.GUI
 {
     class Program
     {
-        static cMonde monde1;
+        static cMonde monde;
         static cObjetMonde objet1;
         static cCompteJoueur user1;
 
@@ -29,6 +29,10 @@ namespace TP1GED.GUI
             CreateUser("spam@phish.com", "Har-Laporte", "Xeyve", "xharl","1234", 665);
             ListerUser();
 
+            // CreateMonde("Premier Monde", 16, 16);
+
+            ListerMonde();
+
             Console.ReadKey();
         }
 
@@ -36,10 +40,10 @@ namespace TP1GED.GUI
 
         static void CreateMonde(string description, int limitX, int limitY)
         {
-            monde1 = new cMonde(description, limitX, limitY);
-            monde1.CreerMonde();
-            AfficherMonde(monde1);
-            Console.WriteLine("Creation du monde");
+            monde = new cMonde(description, limitX, limitY);
+            monde.CreerMonde();
+            AfficherMonde(monde);
+            Console.WriteLine("Creation du monde: " + description);
         }
 
         static void AfficherMonde(cMonde monde)
@@ -51,13 +55,14 @@ namespace TP1GED.GUI
 
         static void ListerMonde()
         {
-            foreach (var m in monde1.RetournerListeMondes())
-                Console.WriteLine(m.Id + Environment.NewLine + m.Description);
+            var test = monde.RetournerListeMondes();
+            foreach (var m in test)
+                Console.WriteLine(m.Id + ", " + m.Description + ", [" + m.LimiteX + ", " + m.LimiteY + "]");
         }
 
         static void SupprimMonde(cMonde monde)
         {
-            Console.WriteLine("Monde avant la supression");
+            Console.WriteLine("Monde pret a etre supprime: " + monde);
             AfficherMonde(monde);
             monde.SupprimerMonde();
             Console.WriteLine("Monde supprime!");
@@ -66,7 +71,7 @@ namespace TP1GED.GUI
         static void CreateObjet(string description, int type, int x, int y)
         {
             objet1 = new cObjetMonde(description, type, x, y);
-            objet1.CreerObjet(monde1);
+            objet1.CreerObjet(monde);
             Console.WriteLine("Creation d'un objet");
         }
 
@@ -74,7 +79,7 @@ namespace TP1GED.GUI
         {
             user1 = new cCompteJoueur(email, nom, prenom, username, mdp, type);
             user1.CreerJoueur();
-            Console.WriteLine("Creation d'un joueur");
+            Console.WriteLine("Creation d'un joueur sous le compte de: " + username);
         }
 
         static void ListerUser()

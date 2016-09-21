@@ -14,12 +14,7 @@ namespace TP1GED.BLL
     /// </summary>
     public class cClasse : cTable
     {
-        private string _nom;
-        private string _description;
-        private int _statBaseStr;
-        private int _statBaseDex;
-        private int _statBaseInt;
-        private int _statBaseVitalite;
+        private Classe _classe;
 
         /// <summary>
         /// Constructeur
@@ -32,22 +27,34 @@ namespace TP1GED.BLL
         /// <param name="StatVitalite"></param>
         public cClasse(string nom, string description, int StatStr, int StatDex, int StatInt, int StatVitalite)
         {
-            _nom = nom;
-            _description = description;
-            _statBaseStr = StatStr;
-            _statBaseDex = StatDex;
-            _statBaseInt = StatInt;
-            _statBaseVitalite = StatVitalite;
+            _classe.NomClasse = nom;
+            _classe.Description = description;
+            _classe.StatBaseStr = StatStr;
+            _classe.StatBaseDex = StatDex;
+            _classe.StatBaseInt = StatInt;
+            _classe.StatBaseVitalite = StatVitalite;
         }
 
         public void CreerClasse()
         {
-            
+            context.Classe.Add(_classe);
+            context.SaveChanges();
         }
 
-        public void ModifierClasse()
+        public void SuprimerClasse()
         {
+            context.Classe.Remove(_classe);
+            context.SaveChanges();
+        }
 
+        public void ModifierClasse(string nom, string description, int StatStr, int StatDex, int StatInt, int StatVitalite)
+        {
+            _classe.NomClasse = nom;
+            _classe.Description = description;
+            _classe.StatBaseStr = StatStr;
+            _classe.StatBaseDex = StatDex;
+            _classe.StatBaseInt = StatInt;
+            _classe.StatBaseVitalite = StatVitalite;
         }
 
     }

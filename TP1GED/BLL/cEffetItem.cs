@@ -25,6 +25,7 @@ namespace TP1GED.BLL
         {
             _effet.TypeEffet = type;
             _effet.ValeurEffet = valeurEffet;
+            context.SaveChanges();
         }
 
         /// <summary>
@@ -48,6 +49,7 @@ namespace TP1GED.BLL
             // A modifier evidement
             _effet.TypeEffet = type;
             _effet.ValeurEffet = valeurEffet;
+            context.SaveChanges();
         }
 
         /// <summary>
@@ -57,6 +59,7 @@ namespace TP1GED.BLL
         public void SupprimerEffet(cItem objet)
         {
             context.EffetItem.Remove(_effet);
+            context.SaveChanges();
         }
     }
 }

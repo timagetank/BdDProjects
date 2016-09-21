@@ -63,12 +63,12 @@ namespace TP1GED.BLL
         /// <param name="prenom"></param>
         /// <param name="mdp"></param>
         /// <param name="type"></param>
-        public void ModifierParametres(string courriel, string nom, string prenom, string mdp, int type) // A revoir
+        public void ModifierParametres(string courriel, string nom, string prenom, string userName, string mdp, int type)
         {
             _compte.Courriel = courriel;
             _compte.Nom = nom;
             _compte.Prenom = prenom;
-          //  _compte.NomUtilisateur = username;
+            _compte.NomUtilisateur = userName;
             _compte.Password = mdp;
             _compte.TypeUtilisateur = type;
             context.SaveChanges();

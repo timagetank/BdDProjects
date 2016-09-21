@@ -78,6 +78,11 @@ namespace TP1GED.BLL
             _classe.StatBaseVitalite = StatVitalite;
         }
 
+        public Classe AccederClass()
+        {
+            return _classe;
+        }
+
     }
     
 }

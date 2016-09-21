@@ -15,17 +15,7 @@ namespace TP1GED.BLL
     public class cHero : cTable
     {
         // Initialiser certains éléments à zéro ?
-        private int _argent;
-        private cClasse _classeHero;
-        private int _experience;
-        private cInventaireHeros _inventaire;
-        private int _niveau;
-        private int _statDex;
-        private int _statInt;
-        private int _statStr;
-        private int _statVitalite;
-        private int _x;
-        private int _y;
+        private Heros _hero;
 
         /// <summary>
         /// Constructeur
@@ -43,17 +33,17 @@ namespace TP1GED.BLL
         /// <param name="y"></param>
         public cHero(int argent, cClasse classeHero, int exp, cInventaireHeros inventaire, int niveau, int StatDex, int StatInt, int StatStr, int StatVit, int x, int y) // À modifier
         {
-            _argent = argent; //
-            _classeHero = classeHero;
-            _experience = exp; //
-            _inventaire = inventaire;
-            _niveau = niveau; //
-            _statDex = StatDex;
-            _statInt = StatInt;
-            _statStr = StatStr;
-            _statVitalite = StatVit;
-            _x = x;
-            _y = y;
+            _hero.Argent = argent; //
+            _hero.Classe = classeHero.AccederClass();
+            _hero.Experience = exp; //
+           // Yo WTF ? _hero.InventaireHero = inventaire.AccederInventaire();
+            _hero.Niveau = niveau; //
+            _hero.StatDex = StatDex;
+            _hero.StatInt = StatInt;
+            _hero.StatStr = StatStr;
+            _hero.StatVitalite = StatVit;
+            _hero.x = x;
+            _hero.y = y;
         }
 
         /// <summary>
@@ -61,15 +51,18 @@ namespace TP1GED.BLL
         /// </summary>
         public void CreerHeros()
         {
-
+            context.Heros.Add(_hero);
+            context.SaveChanges();
         }
 
         /// <summary>
         /// Permet de déplacer un héros.
         /// </summary>
-        public void DeplacerHeros()
+        public void DeplacerHeros(int x, int y)
         {
-
+            _hero.x = x;
+            _hero.y = y;
+            context.SaveChanges();
         }
 
         /// <summary>
@@ -95,15 +88,15 @@ namespace TP1GED.BLL
         /// <param name="StatVit"></param>
         public void ModifierHeros(int argent, cClasse classeHeros, int exp, cInventaireHeros inventaire, int niveau, int StatDex, int StatInt, int StatStr, int StatVit)
         {
-            _argent = argent;
-            _classeHero = classeHeros;
-            _experience = exp;
-            _inventaire = inventaire;
-            _niveau = niveau;
-            _statDex = StatDex;
-            _statInt = StatInt;
-            _statStr = StatStr;
-            _statVitalite = StatVit;
+            _hero.Argent = argent;
+            _hero.Classe = classeHeros.AccederClass();
+            _hero.Experience = exp;
+            // Still, the fuck ?_hero.Inventaire = inventaire;
+            _hero.Niveau = niveau;
+            _hero.StatDex = StatDex;
+            _hero.StatInt = StatInt;
+            _hero.StatStr = StatStr;
+            _hero.StatVitalite = StatVit;
         }
         
         /// <summary>

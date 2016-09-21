@@ -15,12 +15,14 @@ namespace TP1GED.BLL
     public class cInventaireHeros : cTable
     {
         private List<cItem> _items;
+        private InventaireHero _inventaire;
 
         /// <summary>
         /// Constructeur
         /// </summary>
         public cInventaireHeros()
         {
+            _inventaire = new InventaireHero();
             _items = new List<cItem>();
         }
 
@@ -30,7 +32,7 @@ namespace TP1GED.BLL
         /// <param name="objet"></param>
         public void AjouterItemInventaire(cItem objet)
         {
-
+            _items.Add(objet);
         }
 
         /// <summary>
@@ -39,7 +41,12 @@ namespace TP1GED.BLL
         /// <param name="objet"></param>
         public void SupprimerItemInventaire(cItem objet)
         {
+            _items.Remove(objet);
+        }
 
+        public InventaireHero AccederInventaire()
+        {
+            return _inventaire;
         }
     }
 }

@@ -14,14 +14,6 @@ namespace TP1GED.BLL
     /// </summary>
     public class cCompteJoueur : cTable
     {
-        private string _courriel;
-        private cHero _hero; // ???
-        private List<cHero> _heros;
-        private string _nom;
-        private string _prenom;
-        private string _nomUtilisateur;
-        private string _password;
-        private int _TypeUtilisateur; // Rempalcer par un enum ?
         private CompteJoueur _compte;
 
         /// <summary>

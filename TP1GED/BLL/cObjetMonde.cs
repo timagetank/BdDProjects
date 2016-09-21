@@ -15,27 +15,45 @@ namespace TP1GED.BLL
     public class cObjetMonde : cTable
     {
         private string _description;
-        private string _type; // À remplacer par un enum ?
+        private int _type; // À remplacer par un enum ?
         private int _x;
         private int _y;
+        private ObjetMonde _objet;
 
         /// <summary>
         /// Constructeur
         /// </summary>
-        public cObjetMonde(string description, string type, int x, int y)
+        public cObjetMonde(string description, int type, int x, int y)
         {
+            _objet = new ObjetMonde();
             _description = description;
             _type = type;
+            // Ajouter une condition ?
             _x = x;
             _y = y;
         }
 
         /// <summary>
-        /// Permet de Créer un objet pour un monde donné.
+        /// Propriété pour accéder à l'objet.
         /// </summary>
-        public void CreerObjet(cMonde monde) // Pour la BD
+        public ObjetMonde AccesObjet
         {
+            get
+            {
+                return _objet;
+            }
+        }
 
+
+        /// <summary>
+        /// Permet de créer un objet pour un monde donné.
+        /// </summary>
+        public void CreerObjet(cMonde monde)
+        {
+            _objet.Id = monde.AccesMonde.Id;
+            monde.AjouterObjet(_objet);
+            context.ObjetMonde.Add(_objet);
+            //context.SaveChanges();
         }
 
         /// <summary>
@@ -44,6 +62,7 @@ namespace TP1GED.BLL
         public void ModifierDescription(cMonde monde, string description)
         {
             _description = description;
+            monde.AjouterObjet(_objet);
         }
 
         /// <summary>
@@ -51,7 +70,9 @@ namespace TP1GED.BLL
         /// </summary>
         public void SupprimerObjet(cMonde monde) // Pour la BD
         {
-
+            monde.RetirerObjet(_objet);
+            context.ObjetMonde.Remove(_objet);
+            context.SaveChanges();
         }
     }
 }

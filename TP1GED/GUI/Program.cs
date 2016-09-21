@@ -10,12 +10,20 @@ namespace TP1GED.GUI
     class Program
     {
         static cMonde monde1;
+        static cObjetMonde objet1;
 
 
         static void Main(string[] args)
         {
+            /* // Anciens jeux de test pour la classe cMonde
             monde1.CreerMonde();
             ListerMonde();
+            */
+
+            // Jeux de test ObjetMonde
+            CreateMonde("Enfer", 666, 666);
+            CreateObjet("BabyGoon", 5, 69, 99);
+            CreateMonde("Enfer", 666, 666);
 
 
 
@@ -51,6 +59,13 @@ namespace TP1GED.GUI
             AfficherMonde(monde);
             monde.SupprimerMonde();
             Console.WriteLine("Monde supprime!");
+        }
+
+        static void CreateObjet(string description, int type, int x, int y)
+        {
+            objet1 = new cObjetMonde(description, type, x, y);
+            objet1.CreerObjet(monde1);
+            Console.WriteLine("Creation d'un objet");
         }
 
         #endregion

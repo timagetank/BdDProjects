@@ -14,14 +14,14 @@ namespace TP1GED.BLL
     /// </summary>
     public class cMonde : cTable
     {
-        private List<cClasse> _classes; // Il faut ajouter un new pour une composition, sinon c'est un agrégation ???
+        private List<cClasse> _classes;
         private string _description;
         private List<cHero> _heros;
         private List<cItem> _items;
         private int _limiteX;
         private int _limiteY;
         private List<cMonstre> _monstres;
-        private List<cObjetMonde> _objetsMonde;
+        private List<ObjetMonde> _objetsMonde;
         private Monde _monde; 
 
         /// <summary>
@@ -33,6 +33,7 @@ namespace TP1GED.BLL
         public cMonde(string description, int limiteX, int limiteY)
         {
             _monde = new Monde();
+            _objetsMonde = new List<ObjetMonde>();
             _monde.Description = description;
             _monde.LimiteX = limiteX;
             _monde.LimiteY = limiteY;
@@ -56,7 +57,7 @@ namespace TP1GED.BLL
         /// <summary>
         /// Permet de créer un nouveau monde.
         /// </summary>
-        public void CreerMonde() // Pour la BD
+        public void CreerMonde()
         {
             context.Monde.Add(_monde);
             context.SaveChanges();
@@ -109,6 +110,25 @@ namespace TP1GED.BLL
         {
             context.Monde.Remove(_monde);
             context.SaveChanges();
+        }
+
+        /// <summary>
+        /// Permet d'ajouter un objet au monde.
+        /// </summary>
+        /// <param name="objet"></param>
+        public void AjouterObjet(ObjetMonde objet)
+        {
+            _objetsMonde.Add(objet);
+            context.ObjetMonde.Add(objet);
+        }
+
+        /// <summary>
+        /// Permet de retirer un objet au monde.
+        /// </summary>
+        /// <param name="objet"></param>
+        public void RetirerObjet(ObjetMonde objet)
+        {
+            _objetsMonde.Remove(objet);
         }
     }
 }

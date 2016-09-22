@@ -86,9 +86,12 @@ namespace TP1GED.BLL
         /// <summary>
         /// Permet de valider la connexion d'un joueur
         /// </summary>
-        public void ValiderConnexion()
+        public bool ValiderConnexion(string userName, string mdp)
         {
-
+            var joueur = context.CompteJoueur.Where(x => x.NomUtilisateur == userName).FirstOrDefault();
+            if (joueur.Password == mdp)
+                return true;
+            return false;
         }
 
     }

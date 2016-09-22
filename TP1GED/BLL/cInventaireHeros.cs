@@ -20,10 +20,13 @@ namespace TP1GED.BLL
         /// <summary>
         /// Constructeur
         /// </summary>
-        public cInventaireHeros()
+        public cInventaireHeros(int idHero)
         {
             _inventaire = new InventaireHero();
+            _inventaire.IdHero = idHero;
             _items = new List<cItem>();
+            context.InventaireHero.Add(_inventaire);
+            context.SaveChanges();
         }
 
         /// <summary>
@@ -33,6 +36,7 @@ namespace TP1GED.BLL
         public void AjouterItemInventaire(cItem objet)
         {
             _items.Add(objet);
+            context.SaveChanges();
         }
 
         /// <summary>
@@ -42,6 +46,7 @@ namespace TP1GED.BLL
         public void SupprimerItemInventaire(cItem objet)
         {
             _items.Remove(objet);
+            context.SaveChanges();
         }
 
         public InventaireHero AccederInventaire()

@@ -36,7 +36,8 @@ namespace TP1GED.BLL
             _hero.Argent = argent; //
             _hero.Classe = classeHero.AccederClass();
             _hero.Experience = exp; //
-           // Yo WTF ? _hero.InventaireHero = inventaire.AccederInventaire();
+            _hero.InventaireHero = new List<InventaireHero>();
+            _hero.InventaireHero.Add(inventaire.AccederInventaire());
             _hero.Niveau = niveau; //
             _hero.StatDex = StatDex;
             _hero.StatInt = StatInt;
@@ -69,9 +70,9 @@ namespace TP1GED.BLL
         /// Permet de lister tous les héros pour un joueur.
         /// </summary>
         /// <param name="joueur"></param>
-        public void ListerHeros(cCompteJoueur joueur)
+        public List<Heros> ListerHeros(cCompteJoueur joueur)
         {
-
+            return context.Heros.Where(x => x.CompteJoueur == joueur.AccesCompte).ToList();
         }
 
         /// <summary>
@@ -103,7 +104,7 @@ namespace TP1GED.BLL
         /// Permet de retourner tous les éléments dans un rayon de 200 par 200.
         /// </summary>
         /// <param name="monde"></param>
-        public IEnumerable<ObjetMonde> RetournerElements() // À modifier
+        public IEnumerable<ObjetMonde> RetournerElements()
         {
             return _hero.Monde.ObjetMonde.Where(obj => Math.Abs(obj.x - _hero.x) <= 200 && Math.Abs(obj.y - _hero.y) <= 200);
         }

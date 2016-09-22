@@ -824,6 +824,48 @@
                 <ScalarProperty Name="EstConnecte" ColumnName="EstConnecte" />
               </MappingFragment>
             </EntityTypeMapping>
+            <EntityTypeMapping TypeName="Model.Heros">
+              <ModificationFunctionMapping>
+                <UpdateFunction FunctionName="Model.Store.UpdateHero">
+                  <ScalarProperty Name="Id" ParameterName="HeroID" Version="Current" />
+                  <ScalarProperty Name="NomHero" ParameterName="Nom" Version="Current" />
+                  <ScalarProperty Name="StatVitalite" ParameterName="Vitalite" Version="Current" />
+                  <ScalarProperty Name="StatVitalite" ParameterName="Vitalite" Version="Current" />
+                  <ScalarProperty Name="StatDex" ParameterName="Dex" Version="Current" />
+                  <ScalarProperty Name="StatInt" ParameterName="Int" Version="Current" />
+                  <ScalarProperty Name="StatStr" ParameterName="Str" Version="Current" />
+                  <ScalarProperty Name="y" ParameterName="Y" Version="Current" />
+                  <ScalarProperty Name="x" ParameterName="X" Version="Current" />
+                  <ScalarProperty Name="x" ParameterName="X" Version="Current" />
+                  <ScalarProperty Name="EstConnecte" ParameterName="EstConnecte" Version="Current" />
+                  <ScalarProperty Name="Argent" ParameterName="Argent" Version="Current" />
+                  <ScalarProperty Name="Niveau" ParameterName="Niveau" Version="Current" />
+                  <ScalarProperty Name="Experience" ParameterName="Experience" Version="Current" />
+                </UpdateFunction>
+                <InsertFunction FunctionName="Model.Store.CreateHero">
+                  <AssociationEnd AssociationSet="IsPartOfAccount" From="Heros" To="CompteJoueur">
+                    <ScalarProperty Name="Id" ParameterName="ComptJoueurID" />
+                  </AssociationEnd>
+                  <ScalarProperty Name="NomHero" ParameterName="Nom" />
+                  <ScalarProperty Name="NomHero" ParameterName="Nom" />
+                  <ScalarProperty Name="x" ParameterName="X" />
+                  <ScalarProperty Name="y" ParameterName="Y" />
+                  <ScalarProperty Name="StatStr" ParameterName="Str" />
+                  <ScalarProperty Name="StatInt" ParameterName="Int" />
+                  <ScalarProperty Name="StatDex" ParameterName="Dex" />
+                  <ScalarProperty Name="StatVitalite" ParameterName="Vitalite" />
+                  <ScalarProperty Name="ClasseId" ParameterName="Classe" />
+                  <ScalarProperty Name="EstConnecte" ParameterName="EstConnecte" />
+                  <ScalarProperty Name="MondeId" ParameterName="MondeId" />
+                  <ScalarProperty Name="Argent" ParameterName="Argent" />
+                  <ScalarProperty Name="Niveau" ParameterName="Niveau" />
+                  <ScalarProperty Name="Experience" ParameterName="Experience" />
+                </InsertFunction>
+                <DeleteFunction FunctionName="Model.Store.DeleteHero" >
+                  <ScalarProperty Name="Id" ParameterName="HeroID" />
+                </DeleteFunction>
+              </ModificationFunctionMapping>
+            </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="InventaireHero">
             <EntityTypeMapping TypeName="Model.InventaireHero">
